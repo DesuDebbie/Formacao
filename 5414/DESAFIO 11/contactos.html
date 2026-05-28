@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ikigai by IA">
+    <meta name="description" content="Contactos - Ikigai by IA">
+    <link rel="icon" type="image/gif" href="./icon/Screenshot 2026-04-09 202943.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Ikigai by IA | Contactos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,600&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/939396d94f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html"><img src="./icon/Screenshot 2026-04-09 202943.png"
+                        alt="Ikigai" width="45" height="45"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Homepage</a></li>
+                        <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contactos.html">Contactos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nós</a></li>
+                        <li class="nav-item"><a class="nav-link" href="formulario.html">Formulário</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <br><br>
+
+    <div class="container-fluid" py-4>
+        <div class="row">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <div id="morada" class="mb-4">
+                    <i class="fas fa-map-marker-alt"></i> Lisboa, Portugal
+                </div>
+                <div id="telefone" class="mb-4">
+                    <i class="fas fa-phone"></i> +351 912 345 678
+                </div>
+                <div id="mail">
+                    <i class="fas fa-envelope"></i> ikigai.byia@gmail.com
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h2 id="title-header">Mapa de Localização</h2>
+                <label for="destination" id="dest">Qual a sua localização?</label>
+                <input type="text" id="destination"
+                    style="background-color: #9b6ddf; color: white; border: none; text-align: center;">
+                <br><br>
+                <button onclick="calculateRoute()" id="botaocinza">Calcular rota</button>
+            </div>
+
+            <div id="mapa" style="margin-top: 30px;">
+                <iframe width="100%" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-9.1386%2C38.6199%2C-9.1186%2C38.6399&amp;layer=mapnik&marker=38.7169%2C-9.1399"
+                    style="border: 1px solid #9b6ddf" allowfullscreen>
+                </iframe>
+                <br />
+                <a style="color:#9b6ddf"
+                    href="https://www.openstreetmap.org/?mlat=38.7169&amp;mlon=-9.1399#map=16/38.7169/-9.1399"
+                    target="_blank">
+                    Ver mapa maior
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var fixedLocation = L.latLng(38.7169, -9.1399);
+        var map = L.map('map').setView(fixedLocation, 13);
+        var marker = L.marker(fixedLocation).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        function calculateRoute() {
+            var destination = document.getElementById("destination").value;
+            var url = 'https://nominatim.openstreetmap.org/search?format=json&q=' + destination;
+            fetch(url)
+                .then(function (response) { return response.json(); })
+                .then(function (json) {
+                    var lat = json[0].lat;
+                    var lon = json[0].lon;
+                    var routeUrl = 'https://www.openstreetmap.org/directions?engine=graphhopper_car&route=' +
+                        fixedLocation.lat + ',' + fixedLocation.lng + ';' + lat + ',' + lon;
+                    window.open(routeUrl, '_blank');
+                });
+        }
+    </script>
+
+    <div class="footer">
+        <div class="container-flex">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

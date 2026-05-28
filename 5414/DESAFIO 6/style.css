@@ -1,0 +1,222 @@
+:root {
+    --lilac: #6a0dad;
+    --lilac-light: #9b30ff;
+    --lilac-soft: #f0e6ff;
+    --white: #ffffff;
+    --dark: #2d2d3a;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #6a0dad 0%, #9b30ff 100%);
+    padding: 0.8rem 0;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-brand .logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.navbar-brand span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ffffff, #e0b3ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #e0b3ff !important;
+}
+
+.navbar-toggler {
+    background-color: white;
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background: rgba(106, 13, 173, 0.7);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.card-home {
+    background: white;
+    border-radius: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 20px rgba(106, 13, 173, 0.08);
+    border: 1px solid #e8d9ff;
+    height: 100%;
+}
+
+.card-home:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(106, 13, 173, 0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card-home h3 {
+    color: #6a0dad;
+    margin-bottom: 0.8rem;
+}
+
+.citacao {
+    background: linear-gradient(135deg, #f0e6ff, #ffffff);
+    border-radius: 20px;
+    border: 1px solid #dcc8ff;
+}
+
+.citacao p {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #6a0dad;
+}
+
+.card-portfolio {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.08);
+    border: 1px solid #e8d9ff;
+    height: 100%;
+}
+
+.card-portfolio:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(106, 13, 173, 0.15);
+}
+
+.card-portfolio img {
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.card-portfolio:hover img {
+    transform: scale(1.05);
+}
+
+.card-portfolio h3 {
+    color: #6a0dad;
+}
+
+.galeria-footer {
+    background: linear-gradient(135deg, #f0e6ff, #ffffff);
+    border: 1px solid #dcc8ff;
+}
+
+.sobre-banner {
+    background: linear-gradient(rgba(106, 13, 173, 0.7), rgba(106, 13, 173, 0.8)), url('imagens/design8.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+}
+
+.valor-card {
+    background: linear-gradient(135deg, #ffffff, #faf5ff);
+    transition: transform 0.3s;
+    box-shadow: 0 5px 15px rgba(106, 13, 173, 0.08);
+    border: 1px solid #e8d9ff;
+    height: 100%;
+}
+
+.valor-card:hover {
+    transform: translateY(-8px);
+}
+
+.valor-card h3 {
+    color: #6a0dad;
+}
+
+.testemunho-card {
+    background: white;
+    transition: transform 0.3s;
+    border-left: 5px solid #9b30ff;
+    height: 100%;
+}
+
+.testemunho-card:hover {
+    transform: translateY(-5px);
+}
+
+.aspas {
+    font-size: 3rem;
+    color: #9b30ff;
+    line-height: 1;
+}
+
+.info-caixa {
+    background: linear-gradient(135deg, #6a0dad, #9b30ff);
+    height: 100%;
+}
+
+.formulario-encomenda {
+    border: 1px solid #e8d9ff;
+}
+
+.formulario-encomenda .form-control:focus,
+.formulario-encomenda .form-select:focus {
+    border-color: #9b30ff;
+    box-shadow: 0 0 5px rgba(155, 48, 255, 0.3);
+}
+
+.btn-enviar {
+    background: linear-gradient(135deg, #6a0dad, #9b30ff);
+    color: white;
+    transition: transform 0.3s;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #7b1fa2, #ab47bc);
+    color: white;
+}
+
+footer {
+    background: linear-gradient(135deg, #6a0dad, #9b30ff);
+    margin-top: 3rem;
+}
+
+footer a:hover {
+    text-decoration: underline !important;
+}
+
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+
+    .sobre-banner {
+        height: 250px;
+    }
+
+    .sobre-banner h1 {
+        font-size: 1.8rem;
+    }
+}

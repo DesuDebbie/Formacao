@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio 8 </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .resultado {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #333;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .resultado:empty {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Desafio 8 </h1>
+            <p>Programação para a Web | Front-end</p>
+        </div>
+
+        <div class="card">
+            <h2>Media de 4 notas</h2>
+            <p>Vais introduzir 4 notas e o sistema calcula a media dizendo se estas aprovado ou reprovado.</p>
+            <button class="btn" onclick="calcularMedia()">Calcular Media</button>
+            <div id="resMedia" class="resultado"></div>
+        </div>
+
+        <div class="card">
+            <h2>Perimetro e area do circulo</h2>
+            <p>Introduz o raio e vamos calcular o perimetro e a area do circulo.</p>
+            <button class="btn" onclick="calcularCirculo()">Calcular Circulo</button>
+            <div id="resCirculo" class="resultado"></div>
+        </div>
+
+        <div class="card">
+            <h2>Operacoes com dois numeros</h2>
+            <p>Introduz dois numeros e vamos fazer soma, subtracao, multiplicacao e divisao.</p>
+            <button class="btn" onclick="calcularOperacoes()">Fazer Contas</button>
+            <div id="resOperacoes" class="resultado"></div>
+        </div>
+
+        <footer>
+            <p>Desafio 8 - Trabalho pratico de JavaScript</p>
+        </footer>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            let notas = [];
+
+            for (let i = 1; i <= 4; i++) {
+                let nota = parseFloat(prompt("Digite a " + i + "ª nota (0 a 20):"));
+
+                if (isNaN(nota)) {
+                    alert("Por favor, digite um numero valido!");
+                    return;
+                }
+
+                if (nota < 0 || nota > 20) {
+                    alert("A nota deve estar entre 0 e 20!");
+                    return;
+                }
+
+                notas.push(nota);
+            }
+
+            let soma = 0;
+            for (let i = 0; i < notas.length; i++) {
+                soma += notas[i];
+            }
+
+            let media = soma / 4;
+            let status = media >= 9.5 ? "APROVADO" : "REPROVADO";
+            let cor = media >= 9.5 ? "green" : "red";
+
+            document.getElementById("resMedia").innerHTML =
+                '<div style="font-weight: bold; margin-bottom: 10px;">Resultado:</div>' +
+                'Notas: ' + notas.join(", ") + '<br>' +
+                'Media: <strong>' + media.toFixed(2) + '</strong><br>' +
+                'Situacao: <strong style="color: ' + cor + ';">' + status + '</strong>';
+        }
+
+        function calcularCirculo() {
+            let raio = parseFloat(prompt("Digite o raio do circulo:"));
+
+            if (isNaN(raio)) {
+                alert("Por favor, digite um numero valido!");
+                return;
+            }
+
+            if (raio <= 0) {
+                alert("O raio deve ser maior que zero!");
+                return;
+            }
+
+            let perimetro = 2 * Math.PI * raio;
+            let area = Math.PI * Math.pow(raio, 2);
+
+            document.getElementById("resCirculo").innerHTML =
+                '<div style="font-weight: bold; margin-bottom: 10px;">Resultado:</div>' +
+                'Raio: ' + raio + '<br>' +
+                'Perimetro: <strong>' + perimetro.toFixed(2) + '</strong><br>' +
+                'Area: <strong>' + area.toFixed(2) + '</strong>';
+        }
+
+        function calcularOperacoes() {
+            let num1 = parseFloat(prompt("Digite o primeiro numero:"));
+            let num2 = parseFloat(prompt("Digite o segundo numero:"));
+
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, digite numeros validos!");
+                return;
+            }
+
+            let soma = num1 + num2;
+            let subtracao = num1 - num2;
+            let multiplicacao = num1 * num2;
+
+            let divisao;
+            if (num2 === 0) {
+                divisao = "Erro: Divisao por zero!";
+            } else {
+                divisao = (num1 / num2).toFixed(2);
+            }
+
+            document.getElementById("resOperacoes").innerHTML =
+                '<div style="font-weight: bold; margin-bottom: 10px;">Resultado:</div>' +
+                'Numeros: ' + num1 + ' e ' + num2 + '<br>' +
+                'Soma: <strong>' + soma + '</strong><br>' +
+                'Subtracao: <strong>' + subtracao + '</strong><br>' +
+                'Multiplicacao: <strong>' + multiplicacao + '</strong><br>' +
+                'Divisao: <strong>' + divisao + '</strong>';
+        }
+    </script>
+</body>
+
+</html>
